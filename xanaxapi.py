@@ -116,8 +116,8 @@ class XanaxAPI:
             if parsed['status'] != 'success':
                 raise RequestException
             return parsed['response']
-        except ValueError:
-            raise RequestException
+        except ValueError as e:
+            raise RequestException(e)
 
     def request_html(self, action, **kwargs):
         while time.time() - self.last_request < self.rate_limit:
