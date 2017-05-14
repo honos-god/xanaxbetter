@@ -344,7 +344,7 @@ def transcode_release(flac_dir, output_dir, output_format, check_dir=False, max_
         shutil.rmtree(transcode_dir)
         raise
 
-def make_torrent(input_dir, output_dir, tracker, passkey):
+def make_torrent(input_dir, output_dir, tracker, passkey, piece_length):
     torrent = os.path.join(output_dir, os.path.basename(input_dir)) + ".torrent"
     if not os.path.exists(os.path.dirname(torrent)):
         os.path.makedirs(os.path.dirname(torrent))
@@ -352,7 +352,7 @@ def make_torrent(input_dir, output_dir, tracker, passkey):
         'tracker' : tracker,
         'passkey' : passkey,
     }
-    command = ["mktorrent", "-p", "-a", tracker_url, "-o", torrent, input_dir]
+    command = ["mktorrent", "-p", "-l", piece_length, "-a", tracker_url, "-o", torrent, input_dir]
     subprocess.check_output(command, stderr=subprocess.STDOUT)
     return torrent
 

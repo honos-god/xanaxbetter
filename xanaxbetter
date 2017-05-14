@@ -224,7 +224,7 @@ def main():
                 tmpdir = tempfile.mkdtemp()
                 try:
                     transcode_dir = transcode.transcode_release(flac_dir, output_dir, format, check_dir, max_threads=args.threads)
-                    new_torrent = transcode.make_torrent(transcode_dir, tmpdir, api.tracker, api.passkey)
+                    new_torrent = transcode.make_torrent(transcode_dir, tmpdir, api.tracker, api.passkey, config.get('xanax', 'piece_length'))
                     if upload_torrent:
                         permalink = api.permalink(torrent)
                         description = create_description(torrent, flac_dir, format, permalink)
