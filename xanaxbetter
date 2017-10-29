@@ -17,8 +17,7 @@ import mutagen
 from _constants import __site_url__, __version__
 
 def banner():
-    return 'Created with version of xanaxbetter-crawler 1.4. Maintained by Mechazawa & Rguedes\n' \
-           'This transcoding was done by an autonomous system'
+    return 'This transcoding was done by an autonomous system'
 
 def create_description(torrent, flac_dir, format, permalink):
     # Create an example command to document the transcode process.
