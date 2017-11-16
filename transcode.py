@@ -352,7 +352,7 @@ def make_torrent(input_dir, output_dir, tracker, passkey, piece_length):
         'tracker' : tracker,
         'passkey' : passkey,
     }
-    command = ["mktorrent", "-p", "-l", piece_length, "-a", tracker_url, "-o", torrent, input_dir]
+    command = ["mktorrent", "-p", "-l", piece_length, "-a", tracker_url, "-s", "APL", "-o", torrent, input_dir]
     subprocess.check_output(command, stderr=subprocess.STDOUT)
     return torrent
 
